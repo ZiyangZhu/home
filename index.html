@@ -1,373 +1,204 @@
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ziyang ZHU's Homepage</title>
-  <style>
-    :root {
-      --theme-color: #0f79d0;
-      --theme-contrast: #fff;
-      --text-color: #222;
-      --page-color: #fff;
-      --page-background: url("https://ziyangzhu.github.io/home/cnu.png");
-      --page-gutter: 0%;
-      --content-width: 64rem;
-      --section-gap: 1rem;
-      --h3-indent: 2%;
-      --list-indent: 4%;
+<meta charset="utf-8">
+<style>  
+:root {
+  --theme-color: #0F79D0;
+}
+header, footer {
+    padding: 1em;  
+    color: white;  
+    background-color: var(--theme-color);  
+    clear: left;  
+    text-align: center;  
+}
+body {
+  background-image: url('https://ziyangzhu.github.io/home/cnu.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+
+a {
+text-decoration: none;
+}
+
+article {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+mark {
+  background-color: var(--theme-color);
+  color: white;
+  cursor: pointer;
+  font-size: 90%;
+}
+</style> 
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
     }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      color: var(--text-color);
-      background-color: var(--page-color);
-      background-image: var(--page-background);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: fixed;
-      background-size: cover;
-      font-family: system-ui, sans-serif;
-      line-height: 1.5rem;
-      overflow-wrap: anywhere;
-    }
-
-    header, footer {
-      padding: 0.7em 5%;
-      color: var(--theme-contrast);
-      background-color: var(--theme-color);
-      text-align: center;
-    }
-
-    header { padding-block: 1.25em; }
-    button.badge { cursor: pointer; }
-
-    h1 {
-      margin: 0.25em 0;
-      font-size: clamp(1.5rem, calc(3vw + 0.25rem), 2rem);
-      line-height: 1.25;
-    }
-
-    main {
-      width: calc(100% - var(--page-gutter) - var(--page-gutter));
-      max-width: var(--content-width);
-      margin: 1.5rem auto 1.5rem;
-    }
-
-    section { margin-block: var(--section-gap); }
-    main > section:first-child { margin-block-start: 0; }
-    main > section:last-child { margin-block-end: 0; }
-    p { margin-block: 0.4rem; }
-    h2 {
-      margin: 0 0 0.25rem;
-      margin-inline-start: var(--h2-indent);
-      font-size: 1.1rem;
-    }
-    h3 {
-      margin: 0 0 0rem;
-      margin-inline-start: var(--h3-indent);
-      font-size: 1rem;
-    }
-    h2, a, .text-theme, .note { color: var(--theme-color); }
-    a { text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--theme-color);
-      outline-offset: 3px;
-    }
-
-    ul, ol { margin-block: 0.15rem; margin-inline-start: var(--list-indent); padding-inline-start: 1.3rem; }
-    li + li { margin-block-start: 0.15rem; }
-
-    .profile-photo {
-      display: block;
-      width: 160px;
-      height: 180px;
-      max-width: 100%;
-      object-fit: cover;
-      border-radius: 8px;
-      margin: 0.6rem 0 0.5rem 10rem;
-    }
-
-    .profile-details {
-      display: grid;
-      grid-template-columns: max-content minmax(0, 1fr);
-      align-items: start;
-      gap: 0.1rem 1rem;
-      margin: 0;
-    }
-    .profile-details dt { min-width: 0; font-weight: bold; }
-    .profile-details dd { min-width: 0; margin: 0; text-align: left; }
-
-    .badge, .toggle-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.35rem;
-      min-width: 0;
-      min-height: 0;
-      padding: 0.1em 0.3em;
-      border: 0;
-      border-radius: 0.1rem;
-      background-color: var(--theme-color);
-      color: var(--theme-contrast);
-      font-family: inherit;
-      font-size: 0.9rem;
-      font-weight: normal;
-      line-height: 1.1;
-      vertical-align: middle;
-      white-space: nowrap;
-    }
-    .toggle-button { min-width: 1.1rem; padding-inline: 0.2em; cursor: pointer; }
-    .badge:hover, .toggle-button:hover { filter: brightness(0.9); text-decoration: none; }
-    .toggle-icon { width: 0.7em; font-weight: bold; text-align: center; }
-    .disclosure-panel { margin-block: 0rem; }
-    [hidden] { display: none !important; }
-
-    .link-list { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
-    hr { border: 0; border-top: 1px solid currentColor; opacity: 0.25; }
-
-    @media (max-width: 40rem) {
-      :root { --page-gutter: 5%; --section-gap: 1rem; }
-      body { background-attachment: scroll; }
-      .profile-photo { margin-inline-start: 0; }
-      .profile-details {
-        grid-template-columns: minmax(0, 30%) minmax(0, 1fr);
-        column-gap: 0.75rem;
-      }
-    }
-  </style>
- 
-  <noscript>
-    <style>
-      .toggle-button { display: none; }
-      .disclosure-panel[hidden] { display: block !important; }
-    </style>
-  </noscript>
-</head>
+//-->
+</script>
+</head> 
 <body>
-  <header>
-    <h1>Welcome to Ziyang ZHU's Homepage!</h1>
-  </header>
+<header>  
+<h1>Welcome to Ziyang ZHU's Homepage!</h1>  
+</header>
+<article>
+<p>I am a Ph.D student (2023.09-?) of the <a style="color: var(--theme-color)" href="https://math.cnu.edu.cn/">School of Mathematical Sciences</a>, <a style="color: var(--theme-color)" href="https://cnu.edu.cn/">Capital Normal University</a>.</p>
+<ul>
+<img
+  id="random-photo"
+  src=""
+  alt="Ziyang ZHU"
+  style="
+    width: 160px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+  "
+><br>
+<script>
+  const photos = [
+    "https://ziyangzhu.github.io/home/p1.png",
+    "https://ziyangzhu.github.io/home/p2.png",
+    "https://ziyangzhu.github.io/home/p3.png"
+  ];
+  const randomPhoto =
+    photos[Math.floor(Math.random() * photos.length)];
+  document.getElementById("random-photo").src = randomPhoto;
+</script>
+<b>Name:</b> 朱子阳 (Ziyang ZHU)<br>
+<b>E-mail:</b> subsunzhu@gmail.com; zhuziyang@cnu.edu.cn<br>
+<b>Supervisor:</b> 徐飞 教授 (Fei XU, Prof. Dr.)<br>
+<b>Research Interests:</b> AI dissolves boundaries; MATH is one. <del>Number Theory, Arithmetic Geometry, Dynamical System, Mathematical Physics.</del><br>
+</ul>
+<h3><a style="color: var(--theme-color)">News:</a></h3>
+<ul>
+<li>[B↔B] 2026 Beijing-Brussels Statistical Geometry Seminar, <a style="color: var(--theme-color)" href="https://beijing-brussels-statistical-geometry.citrusdeer256.chatgpt.site/#">online</a>.</li>
+<li>[Snooker] New PB alert! 25-point break on March 10, 2026! See my performance on <a style="color: var(--theme-color)" href="https://www.bilibili.com/video/BV1Bau36pEUy">Bilibili</a>.</li>
+<li>[Advert] New notes on the Gross-Zagier formula! Refer to Chapter 4 <a style="color: var(--theme-color)" href="https://ziyangzhu.github.io/home/Arakelov.pdf">here</a>. (Update: 2025-06)</li>
+</ul>
+<hr>
 
-  <main>
-    <section aria-label="Profile">
-      <p>I am a Ph.D student (2023.09-?) of the <a href="https://math.cnu.edu.cn/">School of Mathematical Sciences</a>, <a href="https://cnu.edu.cn/">Capital Normal University</a>.</p>
-      <img id="random-photo" class="profile-photo"
-           src="https://ziyangzhu.github.io/home/p1.png"
-           alt="Ziyang ZHU" width="160" height="180" decoding="async">
-      <dl class="profile-details">
-        <dt>Name:</dt>
-        <dd><span lang="zh-Hans">朱子阳</span> (Ziyang ZHU)</dd>
-        <dt>E-mail:</dt>
-        <dd>subsunzhu@gmail.com; zhuziyang@cnu.edu.cn</dd>
-        <dt>Supervisor:</dt>
-        <dd><span lang="zh-Hans">徐飞 教授</span> (Fei XU, Prof. Dr.)</dd>
-        <dt>Research Interests:</dt>
-        <dd>AI dissolves boundaries; MATH is one. <del>Number Theory, Arithmetic Geometry, Dynamical System, Mathematical Physics.</del></dd>
-      </dl>
-    </section>
 
-    <section aria-labelledby="news-heading">
-      <h2 id="news-heading">News:</h2>
-      <ul>
-        <li>[B↔B] Beijing-Brussels Statistical Geometry Seminar, <a href="https://beijing-brussels-statistical-geometry.citrusdeer256.chatgpt.site/#">online</a>.</li>
-        <li>[Snooker] New PB alert! 25-point break on March 10, 2026! Watch my performance on <a href="https://www.bilibili.com/video/BV1Bau36pEUy">Bilibili</a>.</li>
-        <li>[Advert] New notes on the Gross-Zagier formula! Refer to Chapter 4 <a href="https://ziyangzhu.github.io/home/Arakelov.pdf">here</a>. (Update: 2025-06)</li>
-      </ul>
-    </section>
+<h3><a style="color: var(--theme-color)">Publications & Preprints:</a></h3>
+<ul><ol>
+<li>Equivalence of Canonical and Microcanonical Ensembles for Euclidean Lattices. arXiv:2607.23526.</li>
+<li>On Bounds of Extension Degrees for Similarity of Integral Matrices over Number Fields (with M.Q. Feng). arXiv:2606.21628.</li>
+<li>Conjugacy of Isometries in Real Orthogonal Groups. arXiv:2605.12083.</li>
+</ol>
+<b>Other Related Works:</b> <mark onclick="toggle_visibility('works')">&nbsp;+&nbsp;</mark>
+<div id="works" class="toshow" style="display:none">
+<ul>
+<li>Riemann-Hurwitz Formula for Arithmetic Surfaces. arXiv:2510.08033. <mark onclick="toggle_visibility('rhf')">&nbsp;CMT&nbsp;</mark></li>
+  <div id="rhf" class="toshow" style="display:none; color: var(--theme-color)">
+  Qing Liu (Université de Bordeaux) asserted that the results of this paper were already known; in particular, for Conjecture 20, one can refer to Liu and Lorenzini's paper "Models of Curves and Finite Covers".
+  </div>
+<li>Similarity of Matrices over Dedekind Rings. arXiv:2405.08501. <mark onclick="toggle_visibility('smdr')">&nbsp;CMT&nbsp;</mark></li>
+  <div id="smdr" class="toshow" style="display:none; color: var(--theme-color)">
+  Henri Johnston (University of Exeter) pointed out that Conjecture 1 in this paper is Theorem 30.25 in Curtis and Reiner's book "Methods of Representation Theory I: with Applications to Finite Groups and Orders".
+  </div>
+</ul>
+</div>
+</ul>
 
-    <hr>
+<h3><a style="color: var(--theme-color)">Teaching:</a></h3>
+<ul>
+<b>Current Courses:</b>
+<ul>
+<li>None.</li>
+</ul>
+<b>Past Courses:</b> <mark onclick="toggle_visibility('courses')">&nbsp;+&nbsp;</mark><br>
+<div id="courses" class="toshow" style="display:none">
+<ul>
+<li><a style="color: var(--theme-color)">Abstract Algebra II</a>. Spring 2026, teaching assistant, undergraduate students, CNU. <a href="https://ziyangzhu.github.io/home/algebra2.pdf"><mark>&nbsp;Quiz&nbsp;</mark></a></li>
+<li><a style="color: var(--theme-color)">Arakelov Geometry</a>. Spring 2023, 48 class hours, graduate students, CNU. <a href="https://ziyangzhu.github.io/home/Arakelov.pdf"><mark>&nbsp;Note&nbsp;</mark></a></li>
+<li><a style="color: var(--theme-color)">Representation Theory</a>. Fall 2022, teaching assistant, graduate students, CNU.</li>
+<li><a style="color: var(--theme-color)">Mathematical Analysis II</a>. Spring 2022, teaching assistant, undergraduate students, CNU. <a href="https://ziyangzhu.github.io/home/quiz.pdf"><mark>&nbsp;Quiz&nbsp;</mark></a></li>
+<li><a style="color: var(--theme-color)">Homological Algebra</a>. Spring 2022, 8 class hours, mini course, JSNU.</li>
+<li><a style="color: var(--theme-color)">Dynamical System</a>. Fall 2021, 48 class hours, graduate students, CNU. <a href="https://ziyangzhu.github.io/home/DS.pdf"><mark>&nbsp;Note&nbsp;</mark></a></li>
+<li><a style="color: var(--theme-color)">Arithmetic Geometry</a>. Spring 2021, 48 class hours, graduate students, CNU. <a href="https://ziyangzhu.github.io/home/Tate.pdf"><mark>&nbsp;Note&nbsp;</mark></a></li>
+<li><a style="color: var(--theme-color)">Riemann Surface</a>. Spring 2021, 64 class hours, graduate students, CNU.</li>
+</ul>
+</div>
+<b>Lecture Notes:</b> <mark onclick="toggle_visibility('notes')">&nbsp;+&nbsp;</mark>
+<ul>
+<li>A Concise Course in Arakelov Geometry. <mark onclick="toggle_visibility('ara')">&nbsp;+&nbsp;</mark> <a href="https://ziyangzhu.github.io/home/Arakelov.pdf"><mark>&nbsp;PDF&nbsp;</mark></a></li>
+  <div id="ara" class="toshow" style="display:none; color: var(--theme-color)">
+  This is the note for my Arakelov geometry course, our goal is to establish the arithmetic intersection theory and introduce some important applications, such as the arithmetic Riemann-Roch theorem and the Gross-Zagier formula. All comments are welcome!
+  </div>
+<div id="notes" class="toshow" style="display:none">    
+<li>Representation Theory I: The Case of Finite Groups. <mark onclick="toggle_visibility('rep')">&nbsp;+&nbsp;</mark> <a href="https://ziyangzhu.github.io/home/RTFG.pdf"><mark>&nbsp;PDF&nbsp;</mark></a></li>
+  <div id="rep" class="toshow" style="display:none; color: var(--theme-color)">
+  This note aims to introduce the representation theory of finite groups, including unitary representation, character theory, Fourier transformation, Burnside theorem, induced representations, etc. It can be read on the basis of linear algebra and abstract algebra, but it may be a little boring to read. (Update: 2020-08, Chinese)
+  </div>
+  
+<li>Algebraic Number Theory I: Galois Theory. <mark onclick="toggle_visibility('gal')">&nbsp;+&nbsp;</mark> <a href="https://ziyangzhu.github.io/home/Galois.pdf"><mark>&nbsp;PDF&nbsp;</mark></a></li>
+  <div id="gal" class="toshow" style="display:none; color: var(--theme-color)">
+  This is a note to introduce Galois theory, including polynomial theory, the fundamental theorem and its applications, infinite Galois extensions and transcendental extensions. You can read it with the foundation of algebra and topology. (Update: 2020-08, Chinese)
+  </div>
+  
+<li>Algebraic Number Theory II: Elliptic Curves and Modular Forms. <mark onclick="toggle_visibility('modular')">&nbsp;+&nbsp;</mark> <a href="https://ziyangzhu.github.io/home/EC.pdf"><mark>&nbsp;PDF&nbsp;</mark></a></li>
+  <div id="modular" class="toshow" style="display:none; color: var(--theme-color)">
+  This note is the special introduction of "Riemann Surfaces",  it does not involve proof, but mainly introduces the concept of elliptic curves, modular forms, Mordell theorem, B-SD conjecture and other basic contents. (Update: 2022-05, Chinese)
+  </div>
+  
+<li>Algebraic Number Theory III: Tate's Thesis. <mark onclick="toggle_visibility('tate')">&nbsp;+&nbsp;</mark> <a href="https://ziyangzhu.github.io/home/Tate.pdf"><mark>&nbsp;PDF&nbsp;</mark></a></li>
+  <div id="tate" class="toshow" style="display:none; color: var(--theme-color)">
+   This is the lecture note of the course "Arithmetic Geometry" at CNU, 2021. The main contents include locally compact groups and their representation theory, abstract harmonic analysis, Fourier transformation and Gelfand transformation, Pontryagin duality and Poisson summation formula, profinite groups, adeles and ideles, Tate's thesis, etc. (Update: 2024-03, Chinese)
+  </div>
+  
+<li>Algebraic Number Theory IV: Class Field Theory. <mark onclick="toggle_visibility('cft')">&nbsp;+&nbsp;</mark> <a href="https://ziyangzhu.github.io/home/CFT.pdf"><mark>&nbsp;PDF&nbsp;</mark></a></li>
+  <div id="cft" class="toshow" style="display:none; color: var(--theme-color)">
+   Class field theory uses the arithmetic properties of a global field to determine all its abelian extensions. There are many ways to prove it, we only introduce Tate's idea, and will not give serious proofs. This is the lecture note of the course "Class Field Theory and Reciprocal Law" at CNU, 2021. (Update: 2022-09, Chinese)
+  </div>  
 
-    <section aria-labelledby="publications-heading">
-      <h2 id="publications-heading">Publications &amp; Preprints:</h2>
-      <ol>
-        <li>Equivalence of Canonical and Microcanonical Ensembles for Euclidean Lattices. arXiv:2607.23526.</li>
-        <li>On Bounds of Extension Degrees for Similarity of Integral Matrices over Number Fields (with M.Q. Feng). arXiv:2606.21628.</li>
-        <li>Conjugacy of Isometries in Real Orthogonal Groups. arXiv:2605.12083.</li>
-      </ol>
-      <h3>
-        Other Related Works:
-        <button class="toggle-button" type="button" aria-controls="works" aria-expanded="false" aria-label="Other related works"><span class="toggle-icon" aria-hidden="true">+</span></button>
-      </h3>
-      <div id="works" class="disclosure-panel" hidden>
-        <ul>
-          <li>
-            Riemann-Hurwitz Formula for Arithmetic Surfaces. arXiv:2510.08033.
-            <button class="badge" type="button" aria-controls="rhf" aria-expanded="false" onclick="const p = document.getElementById('rhf'); p.hidden = !p.hidden; this.setAttribute('aria-expanded', !p.hidden);">CMT</button>
-            <div id="rhf" class="disclosure-panel note" hidden>
-              Qing Liu (Université de Bordeaux) asserted that the results of this paper were already known; in particular, for Conjecture 20, one can refer to Liu and Lorenzini's paper "Models of Curves and Finite Covers".
-            </div>
-          </li>
-          <li>
-            Similarity of Matrices over Dedekind Rings. arXiv:2405.08501.
-            <button class="badge" type="button" aria-controls="smdr" aria-expanded="false" onclick="const p = document.getElementById('smdr'); p.hidden = !p.hidden; this.setAttribute('aria-expanded', !p.hidden);">CMT</button>
-            <div id="smdr" class="disclosure-panel note" hidden>
-              Henri Johnston (University of Exeter) pointed out that Conjecture 1 in this paper is Theorem 30.25 in Curtis and Reiner's book "Methods of Representation Theory I: with Applications to Finite Groups and Orders".
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
+<li>Algebraic Number Theory VI: Arithmetic Dynamics. <mark onclick="toggle_visibility('dyn')">&nbsp;+&nbsp;</mark> <a href="https://ziyangzhu.github.io/home/DS.pdf"><mark>&nbsp;PDF&nbsp;</mark></a></li>
+  <div id="dyn" class="toshow" style="display:none; color: var(--theme-color)">
+  Dynamical system is a subject that studies the iteration by means of statistics, it also connects to the number theory. This note consists of four topics: ergodic theory, Oppenheim conjecture, entropies and geometric topology of moduli spaces. This is the lecture note of the course "Dynamical Systems" at CNU, 2021. (Update: 2022-10, Chinese)
+  </div>  
+</div>
+</ul>
+</ul>
 
-    <section aria-labelledby="teaching-heading">
-      <h2 id="teaching-heading">Teaching:</h2>
-      <h3>Current Courses:</h3>
-      <ul><li>None.</li></ul>
-      <h3>
-        Past Courses:
-        <button class="toggle-button" type="button" aria-controls="courses" aria-expanded="false" aria-label="Past courses"><span class="toggle-icon" aria-hidden="true">+</span></button>
-      </h3>
-      <div id="courses" class="disclosure-panel" hidden>
-        <ul>
-          <li><span class="text-theme">Abstract Algebra II</span>. Spring 2026, teaching assistant, undergraduate students, CNU. <a class="badge" href="https://ziyangzhu.github.io/home/algebra2.pdf">Quiz</a></li>
-          <li><span class="text-theme">Arakelov Geometry</span>. Spring 2023, 48 class hours, graduate students, CNU. <a class="badge" href="https://ziyangzhu.github.io/home/Arakelov.pdf">Note</a></li>
-          <li><span class="text-theme">Representation Theory</span>. Fall 2022, teaching assistant, graduate students, CNU.</li>
-          <li><span class="text-theme">Mathematical Analysis II</span>. Spring 2022, teaching assistant, undergraduate students, CNU. <a class="badge" href="https://ziyangzhu.github.io/home/quiz.pdf">Quiz</a></li>
-          <li><span class="text-theme">Homological Algebra</span>. Spring 2022, 8 class hours, mini course, JSNU.</li>
-          <li><span class="text-theme">Dynamical System</span>. Fall 2021, 48 class hours, graduate students, CNU. <a class="badge" href="https://ziyangzhu.github.io/home/DS.pdf">Note</a></li>
-          <li><span class="text-theme">Arithmetic Geometry</span>. Spring 2021, 48 class hours, graduate students, CNU. <a class="badge" href="https://ziyangzhu.github.io/home/Tate.pdf">Note</a></li>
-          <li><span class="text-theme">Riemann Surface</span>. Spring 2021, 64 class hours, graduate students, CNU.</li>
-        </ul>
-      </div>
-      <h3>
-        Lecture Notes:
-        <button class="toggle-button" type="button" aria-controls="lecture-notes" aria-expanded="false" aria-label="Lecture notes"><span class="toggle-icon" aria-hidden="true">+</span></button>
-      </h3>
-       <ul>
-        <li>
-          A Concise Course in Arakelov Geometry.
-          <button class="toggle-button" type="button" aria-controls="ara" aria-expanded="false" aria-label="Details about A Concise Course in Arakelov Geometry"><span class="toggle-icon" aria-hidden="true">+</span></button>
-          <a class="badge" href="https://ziyangzhu.github.io/home/Arakelov.pdf">PDF</a>
-          <div id="ara" class="disclosure-panel note" hidden>
-            This is the note for my Arakelov geometry course, our goal is to establish the arithmetic intersection theory and introduce some important applications, such as the arithmetic Riemann-Roch theorem and the Gross-Zagier formula. All comments are welcome!
-          </div>
-        </li>
-      <div id="lecture-notes" class="disclosure-panel" hidden>
-        <li>
-          Representation Theory I: The Case of Finite Groups.
-          <button class="toggle-button" type="button" aria-controls="rep" aria-expanded="false" aria-label="Details about Representation Theory I: The Case of Finite Groups"><span class="toggle-icon" aria-hidden="true">+</span></button>
-          <a class="badge" href="https://ziyangzhu.github.io/home/RTFG.pdf">PDF</a>
-          <div id="rep" class="disclosure-panel note" hidden>
-            This note aims to introduce the representation theory of finite groups, including unitary representation, character theory, Fourier transformation, Burnside theorem, induced representations, etc. It can be read on the basis of linear algebra and abstract algebra, but it may be a little boring to read. (Update: 2020-08, Chinese)
-          </div>
-        </li>
-        <li>
-          Algebraic Number Theory I: Galois Theory.
-          <button class="toggle-button" type="button" aria-controls="gal" aria-expanded="false" aria-label="Details about Algebraic Number Theory I: Galois Theory"><span class="toggle-icon" aria-hidden="true">+</span></button>
-          <a class="badge" href="https://ziyangzhu.github.io/home/Galois.pdf">PDF</a>
-          <div id="gal" class="disclosure-panel note" hidden>
-            This is a note to introduce Galois theory, including polynomial theory, the fundamental theorem and its applications, infinite Galois extensions and transcendental extensions. You can read it with the foundation of algebra and topology. (Update: 2020-08, Chinese)
-          </div>
-        </li>
-        <li>
-          Algebraic Number Theory II: Elliptic Curves and Modular Forms.
-          <button class="toggle-button" type="button" aria-controls="modular" aria-expanded="false" aria-label="Details about Algebraic Number Theory II: Elliptic Curves and Modular Forms"><span class="toggle-icon" aria-hidden="true">+</span></button>
-          <a class="badge" href="https://ziyangzhu.github.io/home/EC.pdf">PDF</a>
-          <div id="modular" class="disclosure-panel note" hidden>
-            This note is the special introduction of "Riemann Surfaces", it does not involve proof, but mainly introduces the concept of elliptic curves, modular forms, Mordell theorem, B-SD conjecture and other basic contents. (Update: 2022-05, Chinese)
-          </div>
-        </li>
-        <li>
-          Algebraic Number Theory III: Tate's Thesis.
-          <button class="toggle-button" type="button" aria-controls="tate" aria-expanded="false" aria-label="Details about Algebraic Number Theory III: Tate's Thesis"><span class="toggle-icon" aria-hidden="true">+</span></button>
-          <a class="badge" href="https://ziyangzhu.github.io/home/Tate.pdf">PDF</a>
-          <div id="tate" class="disclosure-panel note" hidden>
-            This is the lecture note of the course "Arithmetic Geometry" at CNU, 2021. The main contents include locally compact groups and their representation theory, abstract harmonic analysis, Fourier transformation and Gelfand transformation, Pontryagin duality and Poisson summation formula, profinite groups, adeles and ideles, Tate's thesis, etc. (Update: 2024-03, Chinese)
-          </div>
-        </li>
-        <li>
-          Algebraic Number Theory IV: Class Field Theory.
-          <button class="toggle-button" type="button" aria-controls="cft" aria-expanded="false" aria-label="Details about Algebraic Number Theory IV: Class Field Theory"><span class="toggle-icon" aria-hidden="true">+</span></button>
-          <a class="badge" href="https://ziyangzhu.github.io/home/CFT.pdf">PDF</a>
-          <div id="cft" class="disclosure-panel note" hidden>
-            Class field theory uses the arithmetic properties of a global field to determine all its abelian extensions. There are many ways to prove it, we only introduce Tate's idea, and will not give serious proofs. This is the lecture note of the course "Class Field Theory and Reciprocal Law" at CNU, 2021. (Update: 2022-09, Chinese)
-          </div>
-        </li>
-        <li>
-          Algebraic Number Theory VI: Arithmetic Dynamics.
-          <button class="toggle-button" type="button" aria-controls="dyn" aria-expanded="false" aria-label="Details about Algebraic Number Theory VI: Arithmetic Dynamics"><span class="toggle-icon" aria-hidden="true">+</span></button>
-          <a class="badge" href="https://ziyangzhu.github.io/home/DS.pdf">PDF</a>
-          <div id="dyn" class="disclosure-panel note" hidden>
-            Dynamical system is a subject that studies the iteration by means of statistics, it also connects to the number theory. This note consists of four topics: ergodic theory, Oppenheim conjecture, entropies and geometric topology of moduli spaces. This is the lecture note of the course "Dynamical Systems" at CNU, 2021. (Update: 2022-10, Chinese)
-          </div>
-        </li>
-      </div>
-      </ul>
-    </section>
 
-    <section aria-labelledby="events-heading">
-      <h2 id="events-heading">Events:</h2>
-      <h3>Presentations:</h3>
-      <ul>
-        <li><span class="text-theme">Some Problems on Algebraic Dynamics</span>. Peking University, 2022-07. <a class="badge" href="https://ziyangzhu.github.io/home/spad.pdf">Note</a></li>
-      </ul>
-      <h3>
-        History:
-        <button class="toggle-button" type="button" aria-controls="onew" aria-expanded="false" aria-label="Event history"><span class="toggle-icon" aria-hidden="true">+</span></button>
-      </h3>
-      <div id="onew" class="disclosure-panel" hidden>
-        <ul>
-          <li>[Seminar] Capital Normal University. <span class="text-theme">Arithmetic Topology and Quadratic Forms</span>. 2026-04.</li>
-          <li>[Seminar] Capital Normal University. <span class="text-theme">Mathematical Statistical Physics II: Kinetic Theory</span>. 2025-10. <a class="badge" href="https://ziyangzhu.github.io/home/boltzmann.pdf">Slide</a></li>
-          <li>[Seminar] Capital Normal University. <span class="text-theme">Introduction to Automorphic Representations</span>. 2024-03. <a class="badge" href="https://ziyangzhu.github.io/home/AutoForms.pdf">Note</a></li>
-          <li>[Seminar] Capital Normal University. <span class="text-theme">Mathematical Statistical Physics I: Ensemble Theory</span>. 2023-12. <a class="badge" href="https://ziyangzhu.github.io/home/physics.pdf">Slide</a></li>
-          <li>[Lecture] Y.W. Fan, Tsinghua University. <span class="text-theme">Endofunctors of Triangulated Categories from the Dynamical Perspective</span>. 2022-04.</li>
-          <li>[Lecture] Z.Y. Liu, Sichuan University. <span class="text-theme">Stability Conditions and Geometry of Fano Threefolds</span>. 2021-12.</li>
-          <li>[Lecture] J.Y. Zhao, University of Illinois Chicago. <span class="text-theme">Classification of Algebraic Curves and Riemann Surfaces</span>. 2021-06.</li>
-        </ul>
-      </div>
-    </section>
+<h3><a style="color: var(--theme-color)">Events:</a></h3>
+<ul>
+<b>Presentations:</b>
+<ul>
+<li><a style="color: var(--theme-color)">Some Problems on Algebraic Dynamics</a>. Peking University, 2022-07. <a href="https://ziyangzhu.github.io/home/spad.pdf"><mark>&nbsp;Note&nbsp;</mark></a></li>
+</ul>
 
-    <section aria-labelledby="links-heading">
-      <h2 id="links-heading">Useful Links:</h2>
-      <h3>
-      <div class="link-list">
-        <a class="badge" href="http://arxiv.org/">arXiv</a>
-        <a class="badge" href="https://www.geogebra.org/">GeoGebra</a>
-        <a class="badge" href="http://www.lmfdb.org/">LMFDB</a>
-        <a class="badge" href="https://www.unimelb-macaulay2.cloud.edu.au/#home">Macaulay2</a>
-        <a class="badge" href="http://magma.maths.usyd.edu.au/calc/">Magma</a>
-        <a class="badge" href="https://www.mathcha.io/editor">Mathcha</a>
-        <a class="badge" href="https://sagecell.sagemath.org/">SageCell</a>
-        <a class="badge" href="https://ziyangzhu.github.io/links/" aria-label="More useful links">More</a>
-      </div>
-      </h3>
-    </section>
-  </main>
+<b>History:</b> <mark onclick="toggle_visibility('onew')">&nbsp;+&nbsp;</mark>
+<div id="onew" class="toshow" style="display:none">
+<ul>
+<li>[Seminar] Capital Normal University. <a style="color: var(--theme-color)">Arithmetic Topology and Quadratic Forms</a>. 2026-04.</li>
+<li>[Seminar] Capital Normal University. <a style="color: var(--theme-color)">Mathematical Statistical Physics II: Kinetic Theory</a>. 2025-10. <a href="https://ziyangzhu.github.io/home/boltzmann.pdf"><mark>&nbsp;Slide&nbsp;</mark></a></li>
+<li>[Seminar] Capital Normal University. <a style="color: var(--theme-color)">Introduction to Automorphic Representations</a>. 2024-03. <a href="https://ziyangzhu.github.io/home/AutoForms.pdf"><mark>&nbsp;Note&nbsp;</mark></a></li>
+<li>[Seminar] Capital Normal University. <a style="color: var(--theme-color)">Mathematical Statistical Physics I: Ensemble Theory</a>. 2023-12. <a href="https://ziyangzhu.github.io/home/physics.pdf"><mark>&nbsp;Slide&nbsp;</mark></a></li>
+<li>[Lecture] Y.W. Fan, Tsinghua University. <a style="color: var(--theme-color)">Endofunctors of Triangulated Categories from the Dynamical Perspective</a>. 2022-04.</li>
+<li>[Lecture] Z.Y. Liu, Sichuan University. <a style="color: var(--theme-color)">Stability Conditions and Geometry of Fano Threefolds</a>. 2021-12.</li>
+<li>[Lecture] J.Y. Zhao, University of Illinois Chicago. <a style="color: var(--theme-color)">Classification of Algebraic Curves and Riemann Surfaces</a>. 2021-06.</li>
+</ul>
+</div>
+</ul>
 
-  <footer>Copyright © Ziyang ZHU</footer>
+<h3><a style="color: var(--theme-color)">Useful Links:</a></h3>
+<ul><ul>
+URL: <a href="http://arxiv.org/"><mark>&nbsp;arXiv&nbsp;</mark></a> <a href="https://www.geogebra.org/"><mark>&nbsp;GeoGebra&nbsp;</mark></a> <a href="http://www.lmfdb.org/"><mark>&nbsp;LMFDB&nbsp;</mark></a> <a href="https://www.unimelb-macaulay2.cloud.edu.au/#home"><mark>&nbsp;Macaulay2&nbsp;</mark></a> <a href="http://magma.maths.usyd.edu.au/calc/"><mark>&nbsp;Magma&nbsp;</mark></a> <a href="https://www.mathcha.io/editor"><mark>&nbsp;Mathcha&nbsp;</mark></a> <a href="https://sagecell.sagemath.org/"><mark>&nbsp;SageCell&nbsp;</mark></a> <a href="https://ziyangzhu.github.io/links/"><mark>&nbsp;...&nbsp;</mark></a>
+</ul></ul>
 
-  <script>
-    (() => {
-      "use strict";
-
-      const syncToggle = (button, panel) => {
-        const expanded = !panel.hidden;
-        button.setAttribute("aria-expanded", String(expanded));
-        button.querySelector(".toggle-icon").textContent = expanded ? "-" : "+";
-      };
-
-      document.querySelectorAll(".toggle-button").forEach((button) => {
-        const panel = document.getElementById(button.getAttribute("aria-controls"));
-        if (!panel) return;
-
-        syncToggle(button, panel);
-        button.addEventListener("click", () => {
-          panel.hidden = !panel.hidden;
-          syncToggle(button, panel);
-        });
-      });
-
-      const photo = document.getElementById("random-photo");
-      const photos = [photo.src, "https://ziyangzhu.github.io/home/p2.png", "https://ziyangzhu.github.io/home/p3.png"];
-      photo.addEventListener("error", () => {
-        if (photo.src !== photos[0]) photo.src = photos[0];
-      }, { once: true });
-      photo.src = photos[Math.floor(Math.random() * photos.length)];
-    })();
-  </script>
+</article>
+<footer>Copyright © Ziyang ZHU</footer>
 </body>
 </html>
