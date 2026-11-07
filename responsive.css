@@ -73,7 +73,7 @@
   article mark {
     font-size: 90%;
     display: inline-block;
-    padding: 0.1em 0.15em;
+    padding: 0.02em 0.08em;
     line-height: 1.45;
     touch-action: manipulation;
   }
