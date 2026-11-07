@@ -4,7 +4,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ziyang ZHU's Homepage</title>
   <style>
-    /* 全站主题与布局：主色、比例留白、最大正文宽度均在此设置。 */
     :root {
       --theme-color: #0f79d0;
       --theme-contrast: #fff;
@@ -13,7 +12,7 @@
       --page-background: url("https://ziyangzhu.github.io/home/cnu.png");
       --page-gutter: 0%;
       --content-width: 64rem;
-      --section-gap: 1.1rem;
+      --section-gap: 0.8rem;
       --h3-indent: 2%;
       --list-indent: 4%;
     }
@@ -30,12 +29,12 @@
       background-attachment: fixed;
       background-size: cover;
       font-family: system-ui, sans-serif;
-      line-height: 1.45;
+      line-height: 1.5rem;
       overflow-wrap: anywhere;
     }
 
     header, footer {
-      padding: 0.7em 5%;
+      padding: 1rem;
       color: var(--theme-contrast);
       background-color: var(--theme-color);
       text-align: center;
@@ -45,15 +44,15 @@
     button.badge { cursor: pointer; }
 
     h1 {
-      margin: 0.25em 0;
-      font-size: clamp(1.5rem, calc(3vw + 0.25rem), 2rem);
-      line-height: 1.25;
+      margin: 1rem;
+      font-size: 2rem;
+      line-height: 1rem;
     }
 
     main {
       width: calc(100% - var(--page-gutter) - var(--page-gutter));
       max-width: var(--content-width);
-      margin: 1rem auto 1.4rem;
+      margin: 1.5rem auto 1.5rem;
     }
 
     section { margin-block: var(--section-gap); }
@@ -61,12 +60,12 @@
     main > section:last-child { margin-block-end: 0; }
     p { margin-block: 0.4rem; }
     h2 {
-      margin: 0 0 0.4rem;
+      margin: 0 0 0.25rem;
       margin-inline-start: var(--h2-indent);
       font-size: 1.1rem;
     }
     h3 {
-      margin: 0.65rem 0 0.3rem;
+      margin: 0 0 0rem;
       margin-inline-start: var(--h3-indent);
       font-size: 1rem;
     }
@@ -79,7 +78,7 @@
       outline-offset: 3px;
     }
 
-    ul, ol { margin-block: 0.35rem; margin-inline-start: var(--list-indent); padding-inline-start: 1.3rem; }
+    ul, ol { margin-block: 0.15rem; margin-inline-start: var(--list-indent); padding-inline-start: 1.3rem; }
     li + li { margin-block-start: 0.15rem; }
 
     .profile-photo {
@@ -92,7 +91,6 @@
       margin: 0.6rem 0 0.5rem 10rem;
     }
 
-    /* 所有个人信息共用两列，让右侧内容统一从同一位置开始。 */
     .profile-details {
       display: grid;
       grid-template-columns: max-content minmax(0, 1fr);
@@ -103,34 +101,34 @@
     .profile-details dt { min-width: 0; font-weight: bold; }
     .profile-details dd { min-width: 0; margin: 0; text-align: left; }
 
-    /* PDF/Note 等链接与折叠按钮共用主题样式。 */
     .badge, .toggle-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.25em;
-      min-height: 1.4rem;
-      padding: 0.08em 0.35em;
+      min-width: 0;
+      min-height: 0;
+      padding: 0.1em 0.3em;
       border: 0;
-      border-radius: 0.15rem;
+      border-radius: 0.1rem;
       background-color: var(--theme-color);
       color: var(--theme-contrast);
       font-family: inherit;
-      font-size: 0.8125rem;
+      font-size: 0.9rem;
       font-weight: normal;
-      line-height: 1.25;
-      vertical-align: baseline;
+      line-height: 1.1;
+      vertical-align: middle;
+      white-space: nowrap;
     }
-    .toggle-button { min-width: 1.4rem; cursor: pointer; }
+    .toggle-button { min-width: 1.1rem; padding-inline: 0.2em; cursor: pointer; }
     .badge:hover, .toggle-button:hover { filter: brightness(0.9); text-decoration: none; }
     .toggle-icon { width: 0.7em; font-weight: bold; text-align: center; }
-    .disclosure-panel { margin-block: 0.35rem; }
+    .disclosure-panel { margin-block: 0rem; }
     [hidden] { display: none !important; }
 
     .link-list { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
     hr { border: 0; border-top: 1px solid currentColor; opacity: 0.25; }
 
-    /* 中等屏幕和手机减少比例留白，保留足够的正文宽度。 */
     @media (max-width: 64rem) {
       :root { --page-gutter: 8%; }
     }
@@ -144,41 +142,8 @@
         column-gap: 0.75rem;
       }
     }
-
-    /* 触屏设备增加操作面积；桌面仍保持紧凑的小按钮。 */
-    @media (any-pointer: coarse) {
-        .badge,
-        .toggle-button {
-          min-width: 0;
-          min-height: 0;
-          padding: 0.1em 0.3em;
-          line-height: 1.1;
-          vertical-align: middle;
-          white-space: nowrap;
-        }
-        .toggle-button {
-          min-width: 1.1em;
-          padding-inline: 0.2em;
-        }
-    }
-    /* 缩小按钮留白，避免撑大正文行距 */
-      .badge,
-      .toggle-button {
-        min-width: 0;
-        min-height: 0;
-        padding: 0.1em 0.3em;
-        line-height: 1.1;
-        vertical-align: middle;
-        white-space: nowrap;
-      }
-
-      /* 加减号按钮使用更紧凑的宽度 */
-      .toggle-button {
-        min-width: 1.1em;
-        padding-inline: 0.2em;
-      }
   </style>
-  <!-- 禁用 JavaScript 时直接显示补充内容，隐藏不可用的折叠按钮。 -->
+ 
   <noscript>
     <style>
       .toggle-button { display: none; }
@@ -283,9 +248,7 @@
             This is the note for my Arakelov geometry course, our goal is to establish the arithmetic intersection theory and introduce some important applications, such as the arithmetic Riemann-Roch theorem and the Gross-Zagier formula. All comments are welcome!
           </div>
         </li>
-      </ul>
       <div id="lecture-notes" class="disclosure-panel" hidden>
-        <ul>
         <li>
           Representation Theory I: The Case of Finite Groups.
           <button class="toggle-button" type="button" aria-controls="rep" aria-expanded="false" aria-label="Details about Representation Theory I: The Case of Finite Groups"><span class="toggle-icon" aria-hidden="true">+</span></button>
@@ -334,8 +297,8 @@
             Dynamical system is a subject that studies the iteration by means of statistics, it also connects to the number theory. This note consists of four topics: ergodic theory, Oppenheim conjecture, entropies and geometric topology of moduli spaces. This is the lecture note of the course "Dynamical Systems" at CNU, 2021. (Update: 2022-10, Chinese)
           </div>
         </li>
-      </ul>
       </div>
+      </ul>
     </section>
 
     <section aria-labelledby="events-heading">
@@ -363,8 +326,8 @@
 
     <section aria-labelledby="links-heading">
       <h2 id="links-heading">Useful Links:</h2>
+      <h3>
       <div class="link-list">
-        <span>URL:</span>
         <a class="badge" href="http://arxiv.org/">arXiv</a>
         <a class="badge" href="https://www.geogebra.org/">GeoGebra</a>
         <a class="badge" href="http://www.lmfdb.org/">LMFDB</a>
@@ -372,8 +335,9 @@
         <a class="badge" href="http://magma.maths.usyd.edu.au/calc/">Magma</a>
         <a class="badge" href="https://www.mathcha.io/editor">Mathcha</a>
         <a class="badge" href="https://sagecell.sagemath.org/">SageCell</a>
-        <a class="badge" href="https://ziyangzhu.github.io/links/" aria-label="More useful links">...</a>
+        <a class="badge" href="https://ziyangzhu.github.io/links/" aria-label="More useful links">More</a>
       </div>
+      </h3>
     </section>
   </main>
 
@@ -383,7 +347,6 @@
     (() => {
       "use strict";
 
-      // 以内容区的 hidden 状态为准，同步按钮的读屏状态和 +/- 符号。
       const syncToggle = (button, panel) => {
         const expanded = !panel.hidden;
         button.setAttribute("aria-expanded", String(expanded));
@@ -401,7 +364,6 @@
         });
       });
 
-      // 保留随机照片；HTML 中的默认 src 也可在 JavaScript 禁用时使用。
       const photo = document.getElementById("random-photo");
       const photos = [photo.src, "https://ziyangzhu.github.io/home/p2.png", "https://ziyangzhu.github.io/home/p3.png"];
       photo.addEventListener("error", () => {
