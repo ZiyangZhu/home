@@ -270,11 +270,11 @@
           <li><span class="text-theme">Riemann Surface</span>. Spring 2021, 64 class hours, graduate students, CNU.</li>
         </ul>
       </div>
-    </section>
-
-    <section aria-labelledby="notes-heading">
-      <h2 id="notes-heading">Lecture Notes:</h2>
-      <ul>
+      <h3>
+        Lecture Notes:
+        <button class="toggle-button" type="button" aria-controls="lecture-notes" aria-expanded="false" aria-label="Lecture notes"><span class="toggle-icon" aria-hidden="true">+</span></button>
+      </h3>
+       <ul>
         <li>
           A Concise Course in Arakelov Geometry.
           <button class="toggle-button" type="button" aria-controls="ara" aria-expanded="false" aria-label="Details about A Concise Course in Arakelov Geometry"><span class="toggle-icon" aria-hidden="true">+</span></button>
@@ -283,6 +283,9 @@
             This is the note for my Arakelov geometry course, our goal is to establish the arithmetic intersection theory and introduce some important applications, such as the arithmetic Riemann-Roch theorem and the Gross-Zagier formula. All comments are welcome!
           </div>
         </li>
+      </ul>
+      <div id="lecture-notes" class="disclosure-panel" hidden>
+        <ul>
         <li>
           Representation Theory I: The Case of Finite Groups.
           <button class="toggle-button" type="button" aria-controls="rep" aria-expanded="false" aria-label="Details about Representation Theory I: The Case of Finite Groups"><span class="toggle-icon" aria-hidden="true">+</span></button>
@@ -332,6 +335,7 @@
           </div>
         </li>
       </ul>
+      </div>
     </section>
 
     <section aria-labelledby="events-heading">
@@ -399,7 +403,7 @@
 
       // 保留随机照片；HTML 中的默认 src 也可在 JavaScript 禁用时使用。
       const photo = document.getElementById("random-photo");
-      const photos = [photo.src, "https://ziyangzhu.github.io/home/p2.png", "https://ziyangzhu.github.io/home/p1.png"];
+      const photos = [photo.src, "https://ziyangzhu.github.io/home/p2.png", "https://ziyangzhu.github.io/home/p3.png"];
       photo.addEventListener("error", () => {
         if (photo.src !== photos[0]) photo.src = photos[0];
       }, { once: true });
