@@ -34,7 +34,7 @@
     }
 
     header, footer {
-      padding: 1rem;
+      padding: 0.7em 5%;
       color: var(--theme-contrast);
       background-color: var(--theme-color);
       text-align: center;
@@ -44,9 +44,9 @@
     button.badge { cursor: pointer; }
 
     h1 {
-      margin: 1rem;
-      font-size: 2rem;
-      line-height: 1rem;
+      margin: 0.25em 0;
+      font-size: clamp(1.5rem, calc(3vw + 0.25rem), 2rem);
+      line-height: 1.25;
     }
 
     main {
@@ -134,7 +134,7 @@
     }
 
     @media (max-width: 40rem) {
-      :root { --page-gutter: 5%; --section-gap: 0.9rem; }
+      :root { --page-gutter: 5%; --section-gap: 0.8rem; }
       body { background-attachment: scroll; }
       .profile-photo { margin-inline-start: 0; }
       .profile-details {
