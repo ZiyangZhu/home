@@ -69,15 +69,6 @@
     margin-top: 1.1rem;
   }
 
-  /* Larger touch areas for existing expand/collapse labels. */
-  article mark {
-    font-size: 90%;
-    display: inline-block;
-    padding: 0.02em 0.08em;
-    line-height: 1.45;
-    touch-action: manipulation;
-  }
-
   article img {
     max-width: 100%;
   }
