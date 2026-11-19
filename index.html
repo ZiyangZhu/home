@@ -45,6 +45,23 @@ mark {
   cursor: pointer;
   font-size: 90%;
 }
+
+.support-btn {
+  padding: 2px 4px;
+  font-size: 100%;
+  border: 1px solid var(--theme-color);
+  background: white;
+  color: var(--theme-color);
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 1px;
+  margin-right: 2px;
+}
+
+.support-btn.active {
+  background: var(--theme-color);
+  color: white;
+}
 </style> 
 <script type="text/javascript">
 <!--
@@ -93,12 +110,47 @@ mark {
 <b>Supervisor:</b> 徐飞 教授 (Fei XU, Prof. Dr.)<br>
 <b>Research Interests:</b> AI dissolves boundaries; MATH is one. <del>Number Theory, Arithmetic Geometry, Dynamical System, Mathematical Physics.</del><br>
 </ul>
+
 <h3><a style="color: var(--theme-color)">News:</a></h3>
 <ul>
 <li>[B↔B] 2026 Beijing-Brussels Statistical Geometry Seminar, <a style="color: var(--theme-color)" href="https://beijing-brussels-statistical-geometry.citrusdeer256.chatgpt.site/#">online</a>.</li>
 <li>[Snooker] New PB alert! 25-point break on March 10, 2026! See my performance on <a style="color: var(--theme-color)" href="https://www.bilibili.com/video/BV1Bau36pEUy">Bilibili</a>.</li>
 <li>[Advert] New notes on the Gross-Zagier formula! Refer to Chapter 4 <a style="color: var(--theme-color)" href="https://ziyangzhu.github.io/home/Arakelov.pdf">here</a>. (Update: 2025-06)</li>
 </ul>
+<p>This page was last updated in 2026-11. If you find the content here helpful, please show your <button id="likeBtn" class="support-btn" type="button">support (<span id="likeCount">0</span>)</button>.</p>
+<script>
+  (function() {
+    const INITIAL_COUNT = 0;
+    const COUNT_KEY = 'ziyangzhu_home_like_count';
+    const STATUS_KEY = 'ziyangzhu_home_user_liked';
+
+    const btn = document.getElementById('likeBtn');
+    const countEl = document.getElementById('likeCount');
+
+    let count = parseInt(localStorage.getItem(COUNT_KEY), 10);
+    if (Number.isNaN(count)) count = INITIAL_COUNT;
+    let isLiked = localStorage.getItem(STATUS_KEY) === 'true';
+
+    function render() {
+      countEl.textContent = count;
+      btn.classList.toggle('active', isLiked);
+    }
+
+    btn.addEventListener('click', function() {
+      if (isLiked) {
+        count = Math.max(0, count - 1);
+        isLiked = false;
+      } else {
+        count += 1;
+        isLiked = true;
+      }
+      localStorage.setItem(COUNT_KEY, count);
+      localStorage.setItem(STATUS_KEY, isLiked);
+      render();
+    });
+    render();
+  })();
+</script>
 <hr>
 
 
