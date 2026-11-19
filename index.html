@@ -120,15 +120,14 @@ mark {
 <p>This page was last updated in 2026-11. If you find the content here helpful, please show your <button id="likeBtn" class="support-btn" type="button">support (<span id="likeCount">0</span>)</button>.</p>
 <script>
   (function() {
-    const INITIAL_COUNT = 0;
-    const COUNT_KEY = 'ziyangzhu_home_like_count';
     const STATUS_KEY = 'ziyangzhu_home_user_liked';
+    // cloud counter
+    const API_BASE = 'https://api.counterapi.dev/v1/ziyangzhu-home/support-likes';
 
     const btn = document.getElementById('likeBtn');
     const countEl = document.getElementById('likeCount');
 
-    let count = parseInt(localStorage.getItem(COUNT_KEY), 10);
-    if (Number.isNaN(count)) count = INITIAL_COUNT;
+    let count = 0;
     let isLiked = localStorage.getItem(STATUS_KEY) === 'true';
 
     function render() {
@@ -136,18 +135,60 @@ mark {
       btn.classList.toggle('active', isLiked);
     }
 
+    //
+    fetch(API_BASE + '/')
+      .then(res => res.json())
+      .then(data => {
+        if (typeof data.count === 'number') {
+          count = data.count;
+          render();
+        }
+      })
+      .catch(err => {
+        console.error('Failed to load like count:', err);
+      });
+
+    //
     btn.addEventListener('click', function() {
+      btn.disabled = true;
+
       if (isLiked) {
-        count = Math.max(0, count - 1);
-        isLiked = false;
+        fetch(API_BASE + '/down')
+          .then(res => res.json())
+          .then(data => {
+            if (typeof data.count === 'number') {
+              count = Math.max(0, data.count);
+            }
+            isLiked = false;
+            localStorage.setItem(STATUS_KEY, 'false');
+            render();
+          })
+          .catch(err => {
+            console.error('Failed to cancel like:', err);
+          })
+          .finally(() => {
+            btn.disabled = false;
+          });
       } else {
-        count += 1;
-        isLiked = true;
+        fetch(API_BASE + '/up')
+          .then(res => res.json())
+          .then(data => {
+            if (typeof data.count === 'number') {
+              count = data.count;
+            }
+            isLiked = true;
+            localStorage.setItem(STATUS_KEY, 'true');
+            render();
+          })
+          .catch(err => {
+            console.error('Failed to submit like:', err);
+          })
+          .finally(() => {
+            btn.disabled = false;
+          });
       }
-      localStorage.setItem(COUNT_KEY, count);
-      localStorage.setItem(STATUS_KEY, isLiked);
-      render();
     });
+
     render();
   })();
 </script>
