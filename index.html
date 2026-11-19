@@ -1,6 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<title>Ziyang ZHU - Homepage</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="responsive.css">
 <style>  
@@ -44,6 +45,36 @@ mark {
   color: white;
   cursor: pointer;
   font-size: 90%;
+}
+
+.support-btn {
+  padding: 1px 3px;
+  font-size: 90%;
+  border: 1px solid var(--theme-color);
+  background: white;
+  color: var(--theme-color);
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 1px;
+  margin-right: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  box-sizing: border-box;
+  font-family: inherit;
+  touch-action: manipulation;
+}
+
+.support-btn:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.support-btn.active {
+  background: var(--theme-color);
+  color: white;
 }
 </style> 
 <script type="text/javascript">
@@ -99,6 +130,93 @@ mark {
 <li>[Snooker] New PB alert! 25-point break on March 10, 2026! See my performance on <a style="color: var(--theme-color)" href="https://www.bilibili.com/video/BV1Bau36pEUy">Bilibili</a>.</li>
 <li>[Advert] New notes on the Gross-Zagier formula! Refer to Chapter 4 <a style="color: var(--theme-color)" href="https://ziyangzhu.github.io/home/Arakelov.pdf">here</a>. (Update: 2025-06)</li>
 </ul>
+<p>This page was last updated in 2026-11. If you find the content here helpful, please show your <button id="likeBtn" class="support-btn" type="button" aria-pressed="false" disabled>support (<span id="likeCount">…</span>)</button>.</p>
+<script>
+  (function() {
+    // Local vote status is kept per browser; the totals are shared online.
+    const STATUS_KEY = 'ziyangzhu_home_user_liked_v2';
+    // CounterAPI v1 has shut down. This free counter service supports GET and HIT;
+    // a separate cancellation counter provides a net support total (up - down).
+    const API_BASE = 'https://countapi.mileshilliard.com/api/v1';
+    const UP_KEY = 'ziyangzhu_github_io_home_support_v2_up_20261119_z6f9';
+    const DOWN_KEY = 'ziyangzhu_github_io_home_support_v2_down_20261119_z6f9';
+
+    const btn = document.getElementById('likeBtn');
+    const countEl = document.getElementById('likeCount');
+
+    let upCount = 0;
+    let downCount = 0;
+    let isLiked = false;
+    try {
+      isLiked = localStorage.getItem(STATUS_KEY) === 'true';
+    } catch (err) {
+      console.warn('Local storage unavailable:', err);
+    }
+
+    function render() {
+      countEl.textContent = Math.max(0, upCount - downCount);
+      btn.classList.toggle('active', isLiked);
+      btn.setAttribute('aria-pressed', String(isLiked));
+    }
+
+    async function requestCount(action, key, allowMissing = false) {
+      const response = await fetch(API_BASE + '/' + action + '/' + key, {
+        cache: 'no-store'
+      });
+      // A missing counter has never received a like or cancellation.
+      if (allowMissing && response.status === 404) return 0;
+      if (!response.ok) throw new Error('Counter request failed: HTTP ' + response.status);
+      const data = await response.json();
+      const value = Number(data.value); // The API returns numeric strings.
+      if (!Number.isSafeInteger(value) || value < 0) {
+        throw new Error('Invalid counter value');
+      }
+      return value;
+    }
+
+    Promise.all([
+      requestCount('get', UP_KEY, true),
+      requestCount('get', DOWN_KEY, true)
+    ]).then(([up, down]) => {
+      upCount = up;
+      downCount = down;
+      render();
+      btn.disabled = false;
+    }).catch(err => {
+      console.error('Failed to load support count:', err);
+      countEl.textContent = '—';
+      btn.title = 'Support counter temporarily unavailable';
+      // Avoid recording votes when the totals cannot be loaded.
+    });
+
+    btn.addEventListener('click', async function() {
+      btn.disabled = true; // Prevent rapid double clicks while the request is pending.
+      try {
+        if (isLiked) {
+          downCount = await requestCount('hit', DOWN_KEY);
+        } else {
+          upCount = await requestCount('hit', UP_KEY);
+        }
+        isLiked = !isLiked;
+        try {
+          localStorage.setItem(STATUS_KEY, String(isLiked));
+        } catch (err) {
+          console.warn('Could not save vote state:', err);
+        }
+        btn.removeAttribute('title');
+        render();
+      } catch (err) {
+        console.error('Failed to update support count:', err);
+        btn.title = 'Failed to update support. Please try again.';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    btn.classList.toggle('active', isLiked);
+    btn.setAttribute('aria-pressed', String(isLiked));
+  })();
+</script>
 <hr>
 
 
