@@ -8,20 +8,14 @@
 :root {
   --theme-color: #0F79D0;
 }
-header {
+header, footer {
     padding: 1em;  
     color: white;  
     background-color: var(--theme-color);  
     clear: left;  
     text-align: center;  
 }
-footer {
-    padding: 0.5em;  
-    color: white;  
-    background-color: var(--theme-color);  
-    clear: left;  
-    text-align: center;  
-}
+
 body {
   background-image: url('https://ziyangzhu.github.io/home/cnu.png');
   background-repeat: no-repeat;
@@ -131,7 +125,7 @@ mark {
 <li>[Snooker] New PB alert! 25-point break on March 10, 2026! See my performance on <a style="color: var(--theme-color)" href="https://www.bilibili.com/video/BV1Bau36pEUy">Bilibili</a>.</li>
 <li>[Advert] New notes on the Gross-Zagier formula! Refer to Chapter 4 <a style="color: var(--theme-color)" href="https://ziyangzhu.github.io/home/Arakelov.pdf">here</a>. (Update: 2025-06)</li>
 </ul>
-<p>This page was last updated in 2026-11. If you find the content here helpful, please show your <button id="likeBtn" class="support-btn" type="button" aria-pressed="false" disabled>Support (<span id="likeCount">…</span>)</button>.</p>
+<p style="margin-top: 0; margin-bottom: 0;">This page was last updated in 2026-11. If you find the content here helpful, please show your <button id="likeBtn" class="support-btn" type="button" aria-pressed="false" disabled>Support (<span id="likeCount">…</span>)</button>.</p>
 <script>
   (function() {
     // Local vote status is kept per browser; the totals are shared online.
@@ -218,6 +212,7 @@ mark {
     btn.setAttribute('aria-pressed', String(isLiked));
   })();
 </script>
+<p style="font-size:90%; text-align: right; margin-top: 0; margin-bottom: 0;">中国有句古话叫作：识时务者为俊杰。</p>
 <hr>
 
 
@@ -332,6 +327,6 @@ URL: <a href="http://arxiv.org/"><mark>&nbsp;arXiv&nbsp;</mark></a> <a href="htt
 </ul></ul>
 
 </article>
-<footer>中国有句古话叫作：识时务者为俊杰。<br>Copyright © Ziyang ZHU</footer>
+<footer>Copyright © Ziyang ZHU</footer>
 </body>
 </html>
