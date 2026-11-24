@@ -8,7 +8,14 @@
 :root {
   --theme-color: #0F79D0;
 }
-header, footer {
+header {
+    padding: 1em;  
+    color: white;  
+    background-color: var(--theme-color);  
+    clear: left;  
+    text-align: center;  
+}
+footer {
     padding: 0.5em;  
     color: white;  
     background-color: var(--theme-color);  
@@ -178,7 +185,7 @@ mark {
       btn.disabled = false;
     }).catch(err => {
       console.error('Failed to load support count:', err);
-      countEl.textContent = '—';
+      countEl.textContent = '-';
       btn.title = 'Support counter temporarily unavailable';
       // Avoid recording votes when the totals cannot be loaded.
     });
